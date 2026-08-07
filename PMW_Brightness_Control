@@ -1,0 +1,24 @@
+const int enapin = 9;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(enapin, OUTPUT);
+}
+
+void loop() {
+  Serial.println("75% brightness");
+  analogWrite(enapin, 190); 
+  delay(10000);             
+
+  Serial.println("Dim (almost OFF)");
+  analogWrite(enapin, 2);   
+  delay(5000);
+
+  Serial.println("50% brightness");
+  analogWrite(enapin, 128); 
+  delay(10000);
+
+  Serial.println("OFF");
+  analogWrite(enapin, 0);  
+  delay(5000);
+}
