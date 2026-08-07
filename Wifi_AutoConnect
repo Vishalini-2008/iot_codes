@@ -1,0 +1,30 @@
+void setup()
+{
+  
+}
+void loop() {
+
+    int n = WiFi.scanNetworks();
+
+    if (n == 0)
+    {
+        Serial.println("no network found");
+    }
+    else
+    {
+        for (int i = 0; i < n; ++i)
+        {
+            if (WiFi.status() != WL_CONNECTED)
+            {
+                Serial.println(WiFi.SSID(i));
+                WiFi.begin("Velxio-GUEST", "");
+            }
+            else
+            {
+                Serial.println("Connected to wifi..");
+            }
+        }
+    }
+    Serial.println("......");
+    delay(1000);
+}
