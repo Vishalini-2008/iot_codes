@@ -1,5 +1,4 @@
-
-                               #include <ESP32Servo.h>
+#include <ESP32Servo.h>
 
 Servo myServo;
 int servoPin = 14;
