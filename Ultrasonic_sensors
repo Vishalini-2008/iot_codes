@@ -1,0 +1,37 @@
+int ledPin = 6;
+int buttonPin = 7;
+bool buttonState = false;
+int trigPin = 10; 
+int echoPin = 9;  
+long duration;
+float distanceCm;
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);   
+  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT); 
+}
+
+void loop() {
+  buttonState = digitalRead(buttonPin);
+  if (buttonState == LOW) { 
+    digitalWrite(ledPin, HIGH);
+    Serial.println("LED switched on");
+  } else {
+    digitalWrite(ledPin, LOW); 
+    Serial.println("LED switched off!");
+  }
+  delay(500);
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH, 40000);
+  distanceCm = duration * 0.034 / 2;
+  Serial.print("Distance: ");
+  Serial.print(distanceCm);
+  Serial.println(" cm");
+  delay(500);
+}
